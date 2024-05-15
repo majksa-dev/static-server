@@ -13,7 +13,7 @@ debug = ["essentials/dotenv"]
 
 [dependencies]
 essentials = { tag = "v0.3.1", git = "https://github.com/majksa-dev/rust-essentials", default-features = false, features = ["log", "panic"] }
-chrono = { version = "0.4.20", default-features = false, features = ["clock", "serde"] }
+chrono = { version = "0.4.38", default-features = false, features = ["clock", "serde"] }
 derive_more = "0.99.7"
 futures-util = { version = "0.3.17", default-features = false, features = ["std"] }
 rand = "0.8"
