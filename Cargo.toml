@@ -1,15 +1,18 @@
 [package]
-name = "template-rust-app"
+name = "static-server"
 version = "0.0.1"
 edition = "2021"
 
 [[bin]]
 name = "server"
 
+[features]
+debug = ["essentials/dotenv"]
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-essentials = { tag = "v0.3.1", git = "https://github.com/majksa-dev/rust-essentials" }
+essentials = { tag = "v0.3.1", git = "https://github.com/majksa-dev/rust-essentials", default-features = false, features = ["log", "panic"] }
 chrono = { version = "0.4.20", default-features = false, features = ["clock", "serde"] }
 derive_more = "0.99.7"
 futures-util = { version = "0.3.17", default-features = false, features = ["std"] }
@@ -18,3 +21,7 @@ slab = "0.4"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 envy = "0.4.2"
+snedfile = "0.1.0"
+
+[dev-dependencies]
+assert_fs = "1.1.1"
