@@ -1,7 +1,5 @@
 pub trait StringExt {
     fn starts_with_ci(&self, lower_prefix: &str) -> bool;
-
-    fn split_pop(&mut self, delimiter: char) -> Option<String>;
 }
 
 impl StringExt for String {
@@ -15,10 +13,6 @@ impl StringExt for String {
                 _ => return false,
             }
         }
-    }
-
-    fn split_pop(&mut self, delimiter: char) -> Option<String> {
-        Some(self.split_off(self.find(delimiter)?))
     }
 }
 
