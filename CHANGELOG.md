@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/majksa-dev/static-server/compare/v0.1.0...v0.1.1) (2024-05-16)
+
+
+### Bug Fixes
+
+* build docker only for "linux/amd64" and "linux/arm64" ([2d00049](https://github.com/majksa-dev/static-server/commit/2d000496487193a7c41850e1d42816c0ae9f03a1))
+
 ## 0.1.0 (2024-05-16)
 
 
