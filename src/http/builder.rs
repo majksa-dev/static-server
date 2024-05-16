@@ -37,7 +37,7 @@ impl Builder {
             self.health_check_port = health_check_port;
         }
         if let Some(server_root) = &env.server_root {
-            self.server_root = server_root.clone();
+            self.server_root.clone_from(server_root);
         }
         self
     }
