@@ -14,8 +14,9 @@ FROM debian:bullseye-slim
 RUN apt-get update && apt-get install -y wget libssl-dev && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /app
 WORKDIR /app
-ENV RUST_LOG=info
+ENV APP_ENV=production
 ENV PORT=80
+ENV HOST=0.0.0.0
 ENV HEALTH_CHECK_PORT=9000
 EXPOSE 80
 COPY --from=builder /app/server /app/server

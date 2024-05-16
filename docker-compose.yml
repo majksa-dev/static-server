@@ -4,10 +4,9 @@ services:
   web:
     build: .
     ports:
-      - "8080:80"
+      - "8082:80"
     healthcheck:
-      test:
-        ["CMD", "wget", "-q", "-O", "-", "http://localhost:$$HEALTH_CHECK_PORT"]
+      test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:9000"]
       interval: 5s
       timeout: 5s
       start_period: 5s
@@ -15,9 +14,5 @@ services:
     volumes:
       - ./static:/app/static
     environment:
-      - RUST_BACKTRACE=0
-      - RUST_LOG=info
-      - PORT=80
-      - HEALTH_CHECK_PORT=9000
       - SERVER_ROOT=/app/static
       - THREADS=16

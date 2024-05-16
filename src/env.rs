@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::{net::IpAddr, path::PathBuf};
 
 use serde::Deserialize;
 
@@ -6,6 +6,7 @@ use serde::Deserialize;
 pub struct Env {
     pub port: Option<u16>,
     pub health_check_port: Option<u16>,
+    pub host: Option<IpAddr>,
     pub threads: Option<usize>,
     pub server_root: Option<PathBuf>,
 }

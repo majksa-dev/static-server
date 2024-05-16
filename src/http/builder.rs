@@ -1,10 +1,11 @@
-use std::path::PathBuf;
+use std::{net::IpAddr, path::PathBuf};
 
 use crate::env::Env;
 
 pub struct Builder {
     pub threads: usize,
     pub port: u16,
+    pub host: IpAddr,
     pub health_check_port: u16,
     pub server_root: PathBuf,
 }
@@ -14,6 +15,7 @@ impl Default for Builder {
         Self {
             threads: 4,
             port: 80,
+            host: IpAddr::from([127, 0, 0, 1]),
             health_check_port: 9000,
             server_root: PathBuf::from("./static"),
         }
@@ -27,6 +29,9 @@ impl Builder {
         }
         if let Some(port) = env.port {
             self.port = port;
+        }
+        if let Some(host) = env.host {
+            self.host = host;
         }
         if let Some(health_check_port) = env.health_check_port {
             self.health_check_port = health_check_port;
@@ -44,6 +49,11 @@ impl Builder {
 
     pub fn port(mut self, port: u16) -> Self {
         self.port = port;
+        self
+    }
+
+    pub fn host(mut self, host: IpAddr) -> Self {
+        self.host = host;
         self
     }
 

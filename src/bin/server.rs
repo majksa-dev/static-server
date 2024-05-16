@@ -1,7 +1,7 @@
-use static_server::{env::Env, http::server};
+use static_server::{env::Env, http};
 
 fn main() {
     essentials::install();
     let env = Env::new().unwrap();
-    server::build_from_env(&env).run_forever();
+    http::build_from_env(&env).run_forever();
 }

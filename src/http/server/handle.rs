@@ -3,12 +3,9 @@ use std::{fs::File, io::Write, net::TcpStream, sync::Arc};
 use essentials::{error, warn};
 use snedfile::send_file;
 
-use crate::utils::etag;
+use crate::{http::builder::Builder, utils::etag};
 
-use super::{
-    builder::Builder,
-    request::{Error, ReadRequest, Request},
-};
+use super::request::{Error, ReadRequest, Request};
 
 #[derive(Debug)]
 struct Response {
