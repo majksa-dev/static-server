@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/majksa-dev/static-server/compare/v0.1.1...v0.2.0) (2024-06-11)
+
+
+### Features
+
+* implement custom rust server library ([2842765](https://github.com/majksa-dev/static-server/commit/284276514a80a2876804738b18e1c6da0d7363c1))
+
 ## [0.1.1](https://github.com/majksa-dev/static-server/compare/v0.1.0...v0.1.1) (2024-05-16)
 
 
