@@ -1,9 +1,12 @@
 use std::{net::IpAddr, path::PathBuf};
 
+use gateway::{builder, Server};
+
 use crate::env::Env;
 
+use super::server::FileServer;
+
 pub struct Builder {
-    pub threads: usize,
     pub port: u16,
     pub host: IpAddr,
     pub health_check_port: u16,
@@ -13,10 +16,9 @@ pub struct Builder {
 impl Default for Builder {
     fn default() -> Self {
         Self {
-            threads: 4,
-            port: 80,
+            port: 8082,
             host: IpAddr::from([127, 0, 0, 1]),
-            health_check_port: 9000,
+            health_check_port: 9002,
             server_root: PathBuf::from("./static"),
         }
     }
@@ -24,9 +26,6 @@ impl Default for Builder {
 
 impl Builder {
     pub fn load_env(mut self, env: &Env) -> Self {
-        if let Some(threads) = env.threads {
-            self.threads = threads;
-        }
         if let Some(port) = env.port {
             self.port = port;
         }
@@ -39,11 +38,6 @@ impl Builder {
         if let Some(server_root) = &env.server_root {
             self.server_root.clone_from(server_root);
         }
-        self
-    }
-
-    pub fn threads(mut self, threads: usize) -> Self {
-        self.threads = threads;
         self
     }
 
@@ -67,7 +61,12 @@ impl Builder {
         self
     }
 
-    pub fn run_forever(self) {
-        super::run_forever(self);
+    pub fn build(self) -> Server {
+        builder(FileServer::new(self.server_root), |_| Some(String::new()))
+            .with_app_port(self.port)
+            .with_health_check_port(self.health_check_port)
+            .with_host(self.host)
+            .register_peer(String::new(), |_| Some(String::new()))
+            .build()
     }
 }
