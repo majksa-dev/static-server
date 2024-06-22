@@ -1,0 +1,13 @@
+name: Release Please
+
+on:
+  release:
+    types:
+      - created
+
+permissions:
+  contents: write
+
+jobs:
+  release-please:
+    uses: majksa-actions/workflows/.github/workflows/after-release-please.yml@v1
