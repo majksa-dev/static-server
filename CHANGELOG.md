@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/majksa-dev/static-server/compare/v0.2.0...v0.2.1) (2024-06-22)
+
+
+### Bug Fixes
+
+* implement zero copy using sendfile and new gateway changes ([22211bb](https://github.com/majksa-dev/static-server/commit/22211bb245681c2fb64c547c764e8e949b0e4658))
+* response body copy_to should return () ([a2a4c04](https://github.com/majksa-dev/static-server/commit/a2a4c04ef0a2ffa404d5c1518f08155f3aa4e29b))
+
 ## [0.2.0](https://github.com/majksa-dev/static-server/compare/v0.1.1...v0.2.0) (2024-06-11)
 
 
