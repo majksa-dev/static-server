@@ -26,6 +26,7 @@ impl ResponseBody for FileBody {
     }
 
     async fn copy_to<'a>(&mut self, writer: &'a mut OwnedWriteHalf) -> io::Result<()> {
-        ::io::copy_file(&mut self.file, writer).await
+        ::io::copy_file(&mut self.file, writer).await?;
+        Ok(())
     }
 }
