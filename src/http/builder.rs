@@ -4,7 +4,7 @@ use gateway::{builder, Server};
 
 use crate::env::Env;
 
-use super::server::FileServer;
+use super::{router::AnyRouter, server::FileServer};
 
 pub struct Builder {
     pub port: u16,
@@ -16,9 +16,9 @@ pub struct Builder {
 impl Default for Builder {
     fn default() -> Self {
         Self {
-            port: 8082,
+            port: 80,
             host: IpAddr::from([127, 0, 0, 1]),
-            health_check_port: 9002,
+            health_check_port: 9000,
             server_root: PathBuf::from("./static"),
         }
     }
@@ -66,7 +66,7 @@ impl Builder {
             .with_app_port(self.port)
             .with_health_check_port(self.health_check_port)
             .with_host(self.host)
-            .register_peer(String::new(), |_| Some(String::new()))
+            .register_peer(String::new(), AnyRouter::new())
             .build()
     }
 }

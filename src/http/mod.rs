@@ -2,7 +2,9 @@ use crate::env::Env;
 
 use self::builder::Builder;
 
+mod body;
 mod builder;
+mod router;
 pub mod server;
 
 pub fn create() -> Builder {
