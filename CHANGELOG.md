@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.2](https://github.com/majksa-dev/static-server/compare/v0.2.1...v0.2.2) (2024-06-22)
+
+
+### Bug Fixes
+
+* release please version ([ae4e1af](https://github.com/majksa-dev/static-server/commit/ae4e1af8b844b5f3a3bf68e9e7017f15d451855c))
+* update Cargo.lock ([cb4da29](https://github.com/majksa-dev/static-server/commit/cb4da292c04d0f43828594347771a3243101d8b8))
+
 ## [0.2.1](https://github.com/majksa-dev/static-server/compare/v0.2.0...v0.2.1) (2024-06-22)
 
 
