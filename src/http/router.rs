@@ -1,16 +1,24 @@
-use gateway::{Request, Router};
+use gateway::{Id, Request, Router, RouterBuilder, RouterService};
 
-#[derive(Debug, Default)]
-pub struct AnyRouter(String);
+#[derive(Debug)]
+pub struct AnyRouter;
 
-impl AnyRouter {
+pub struct AnyRouterBuilder;
+
+impl AnyRouterBuilder {
     pub fn new() -> Self {
-        Self::default()
+        Self
+    }
+}
+
+impl RouterBuilder for AnyRouterBuilder {
+    fn build(self: Box<Self>) -> (Vec<String>, RouterService) {
+        (vec![String::new()], Box::new(AnyRouter))
     }
 }
 
 impl Router for AnyRouter {
-    fn matches(&self, _request: &Request) -> Option<&String> {
-        Some(&self.0)
+    fn matches(&self, _request: &Request) -> Option<Id> {
+        Some(0)
     }
 }
