@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.3](https://github.com/majksa-dev/static-server/compare/v0.2.2...v0.2.3) (2024-06-27)
+
+
+### Bug Fixes
+
+* **deps:** update gateway ([40e2df7](https://github.com/majksa-dev/static-server/commit/40e2df70b4c4f908f3f36c0e7b3fa8cbef7d27e9))
+* **deps:** upgrade dependencies ([f7f049d](https://github.com/majksa-dev/static-server/commit/f7f049dc2dee3013bba0c17f50968a3cae91d966))
+
 ## [0.2.2](https://github.com/majksa-dev/static-server/compare/v0.2.1...v0.2.2) (2024-06-22)
 
 
