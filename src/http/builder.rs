@@ -1,10 +1,10 @@
 use std::{net::IpAddr, path::PathBuf};
 
-use gateway::{builder, Server};
+use gateway::{builder, Result, Server};
 
 use crate::env::Env;
 
-use super::{router::AnyRouter, server::FileServer};
+use super::{router::AnyRouterBuilder, server::FileServerBuilder};
 
 pub struct Builder {
     pub port: u16,
@@ -61,12 +61,15 @@ impl Builder {
         self
     }
 
-    pub fn build(self) -> Server {
-        builder(FileServer::new(self.server_root), |_| Some(String::new()))
-            .with_app_port(self.port)
-            .with_health_check_port(self.health_check_port)
-            .with_host(self.host)
-            .register_peer(String::new(), AnyRouter::new())
-            .build()
+    pub async fn build(self) -> Result<Server> {
+        builder(FileServerBuilder::new(self.server_root), |_| {
+            Some(String::new())
+        })
+        .with_app_port(self.port)
+        .with_health_check_port(self.health_check_port)
+        .with_host(self.host)
+        .register_peer(String::new(), AnyRouterBuilder::new())
+        .build()
+        .await
     }
 }

@@ -19,10 +19,10 @@ impl FileBody {
 
 #[async_trait]
 impl ResponseBody for FileBody {
-    async fn read_all(mut self: Box<Self>) -> io::Result<String> {
-        let mut buffer = String::new();
-        self.file.read_to_string(&mut buffer).await?;
-        Ok(buffer)
+    async fn read_all(mut self: Box<Self>, len: usize) -> io::Result<String> {
+        let mut buf = vec![0; len];
+        self.file.read_exact(&mut buf).await?;
+        String::from_utf8(buf).map_err(|e| io::Error::new(io::ErrorKind::Other, e))
     }
 
     async fn copy_to<'a>(&mut self, writer: &'a mut OwnedWriteHalf) -> io::Result<()> {

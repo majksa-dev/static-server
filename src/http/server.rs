@@ -2,16 +2,33 @@ use super::body::FileBody;
 use crate::utils::etag;
 use async_trait::async_trait;
 use essentials::warn;
-use gateway::{http::HeaderMapExt, Context, Error, OriginServer, Request, Response, Result};
+use gateway::{
+    http::HeaderMapExt, Ctx, Origin, OriginServer, OriginServerBuilder, Request, Response, Result,
+};
 use http::{header, StatusCode};
-use std::path::PathBuf;
+use std::{collections::HashMap, path::PathBuf};
 use tokio::{fs::File, net::tcp::OwnedReadHalf};
 
 pub struct FileServer(PathBuf);
 
-impl FileServer {
+pub struct FileServerBuilder {
+    server_root: PathBuf,
+}
+
+impl FileServerBuilder {
     pub fn new(server_root: PathBuf) -> Self {
-        Self(server_root)
+        Self { server_root }
+    }
+}
+
+#[async_trait]
+impl OriginServerBuilder for FileServerBuilder {
+    async fn build(
+        self: Box<Self>,
+        _: &[String],
+        _: &HashMap<String, Vec<String>>,
+    ) -> Result<Origin> {
+        Ok(Box::new(FileServer(self.server_root)))
     }
 }
 
@@ -19,7 +36,7 @@ impl FileServer {
 impl OriginServer for FileServer {
     async fn connect(
         &self,
-        _: &Context,
+        _: &Ctx,
         request: Request,
         _: OwnedReadHalf,
         _: Vec<u8>,
@@ -46,7 +63,7 @@ impl OriginServer for FileServer {
             }
         };
         let len = metadata.len();
-        let last_access = metadata.accessed().map_err(Error::io)?;
+        let last_access = metadata.accessed()?;
         let etag = etag::generate(&last_access, len);
         if let Some(if_none_match) = request.header(header::IF_NONE_MATCH) {
             if etag == if_none_match.to_str().unwrap() {
