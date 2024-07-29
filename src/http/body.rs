@@ -1,9 +1,8 @@
 use async_trait::async_trait;
-use gateway::http::response::ResponseBody;
+use gateway::{http::response::ResponseBody, WriteHalf};
 use tokio::{
     fs::File,
     io::{self, AsyncReadExt},
-    net::tcp::OwnedWriteHalf,
 };
 
 #[derive(Debug)]
@@ -25,7 +24,16 @@ impl ResponseBody for FileBody {
         String::from_utf8(buf).map_err(|e| io::Error::new(io::ErrorKind::Other, e))
     }
 
-    async fn copy_to<'a>(&mut self, writer: &'a mut OwnedWriteHalf) -> io::Result<()> {
+    async fn copy_to<'a>(
+        &mut self,
+        writer: &'a mut WriteHalf,
+        length: Option<usize>,
+    ) -> io::Result<()> {
+        if let Some(length) = length {
+            if length == 0 {
+                return Ok(());
+            }
+        }
         ::io::copy_file(&mut self.file, writer).await?;
         Ok(())
     }

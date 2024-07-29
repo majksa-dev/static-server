@@ -63,7 +63,7 @@ impl Builder {
 
     pub async fn build(self) -> Result<Server> {
         builder(FileServerBuilder::new(self.server_root), |_| {
-            Some(String::new())
+            Some((String::new(), None))
         })
         .with_app_port(self.port)
         .with_health_check_port(self.health_check_port)
