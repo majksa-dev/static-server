@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.4](https://github.com/majksa-dev/static-server/compare/v0.2.3...v0.2.4) (2024-07-29)
+
+
+### Bug Fixes
+
+* dependabot groups ([f139a0e](https://github.com/majksa-dev/static-server/commit/f139a0e1889a589377ea023b5d634cf86a944fb5))
+* **deps:** bump the dependencies group with 7 updates ([7560498](https://github.com/majksa-dev/static-server/commit/7560498f724c6b144de9cf2048661ed6cca5c976))
+* response body copy to ([06d3c16](https://github.com/majksa-dev/static-server/commit/06d3c16a5cea689f276f88f07a8bf540e7b931b2))
+
 ## [0.2.3](https://github.com/majksa-dev/static-server/compare/v0.2.2...v0.2.3) (2024-06-27)
 
 
