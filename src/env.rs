@@ -7,7 +7,6 @@ pub struct Env {
     pub port: Option<u16>,
     pub health_check_port: Option<u16>,
     pub host: Option<IpAddr>,
-    pub threads: Option<usize>,
     pub server_root: Option<PathBuf>,
 }
 

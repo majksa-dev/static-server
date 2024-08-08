@@ -41,10 +41,23 @@ impl OriginServer for FileServer {
         _: OwnedReadHalf,
         _: Vec<u8>,
     ) -> Result<Response> {
-        let path = self.0.join(&request.path.as_str()[1..]);
+        let mut path = self.0.join(&request.path.as_str()[1..]);
         if !path.starts_with(&self.0) {
             return Ok(Response::new(StatusCode::FORBIDDEN));
         }
+        if path.is_dir() {
+            path.push("index.html");
+        }
+        if !path.is_file() {
+            path.set_extension("html");
+        }
+        if !path.is_file() {
+            let uri = &request.path.as_str()[1..];
+            let folder_idx = uri.find('/').unwrap_or(uri.len());
+            path = self.0.join(&uri[..folder_idx]);
+            path.push("404.html");
+        }
+
         let metadata = match path.metadata() {
             Ok(metadata) => metadata,
             Err(e) => {
