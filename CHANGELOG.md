@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.5](https://github.com/majksa-dev/static-server/compare/v0.2.4...v0.2.5) (2024-08-08)
+
+
+### Bug Fixes
+
+* **deps:** bump the dependencies group across 1 directory with 3 updates ([30a93a1](https://github.com/majksa-dev/static-server/commit/30a93a1d61109de952eb5e85d54f6a644e2dabcb))
+* **deps:** use all features for derive_more ([4e6bc25](https://github.com/majksa-dev/static-server/commit/4e6bc25e446c5eb702e253d50e697e61b32774e5))
+* **router:** handle document index and fallback page ([6817fb1](https://github.com/majksa-dev/static-server/commit/6817fb176eb5877d1dab3e6af6e7a182a9271d3b))
+
 ## [0.2.4](https://github.com/majksa-dev/static-server/compare/v0.2.3...v0.2.4) (2024-07-29)
 
 
