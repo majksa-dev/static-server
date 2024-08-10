@@ -21,4 +21,4 @@ ENV HEALTH_CHECK_PORT=9000
 EXPOSE 80
 COPY --from=builder /app/server /app/server
 CMD [ "./server"]
-HEALTHCHECK --interval=5s --timeout=5s --start-period=5s --retries=5 CMD [ "wget", "-q", "-O", "-", "http://localhost:$$HEALTH_CHECK_PORT" ]
+HEALTHCHECK --interval=5s --timeout=5s --start-period=5s --retries=5 CMD [ "wget", "-q", "-O", "-", "http://localhost:9000" ]
