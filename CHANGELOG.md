@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.6](https://github.com/majksa-dev/static-server/compare/v0.2.5...v0.2.6) (2024-08-10)
+
+
+### Bug Fixes
+
+* **deps:** bump updates ([2b94f26](https://github.com/majksa-dev/static-server/commit/2b94f263a806b1f01fc5b4a3d35da634eddd7a36))
+* **dockerfile:** healthcheck ([fb424d5](https://github.com/majksa-dev/static-server/commit/fb424d5765bc656e1e8fed1ecc6fa1346dc01da2))
+
 ## [0.2.5](https://github.com/majksa-dev/static-server/compare/v0.2.4...v0.2.5) (2024-08-08)
 
 
