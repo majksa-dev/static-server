@@ -34,7 +34,7 @@ impl ResponseBody for FileBody {
                 return Ok(());
             }
         }
-        ::io::copy_file(&mut self.file, writer).await?;
+        ::io::copy_file(&mut self.file, writer, length).await?;
         Ok(())
     }
 }
