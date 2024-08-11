@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.8](https://github.com/majksa-dev/static-server/compare/v0.2.7...v0.2.8) (2024-08-11)
+
+
+### Bug Fixes
+
+* **platforms:** build only for amd ([6d4c1bd](https://github.com/majksa-dev/static-server/commit/6d4c1bd3e3dbd87a1d539fb7e4ce64247f0443ba))
+
 ## [0.2.7](https://github.com/majksa-dev/static-server/compare/v0.2.6...v0.2.7) (2024-08-11)
 
 
