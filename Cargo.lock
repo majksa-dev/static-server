@@ -1094,7 +1094,7 @@ dependencies = [
 
 [[package]]
 name = "static-server"
-version = "0.2.7"
+version = "0.2.8"
 dependencies = [
  "assert_fs",
  "async-trait",
