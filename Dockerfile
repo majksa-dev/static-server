@@ -1,5 +1,5 @@
 # Build app
-FROM rust:1.78-slim-bullseye AS builder
+FROM rust:1-slim-bullseye AS builder
 RUN apt-get update && apt-get install -y \
     pkg-config libssl-dev build-essential cmake && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /app
@@ -10,7 +10,7 @@ RUN cargo build --release
 RUN cp ./target/release/server ./server
 
 # Application
-FROM debian:11.9-slim
+FROM debian:bullseye-slim
 RUN apt-get update && apt-get install -y wget libssl-dev && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /app
 WORKDIR /app
