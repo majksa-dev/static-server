@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/majksa-dev/static-server/compare/v0.2.6...v0.2.7) (2024-08-11)
+
+
+### Bug Fixes
+
+* **deps:** bump versions ([b5e2265](https://github.com/majksa-dev/static-server/commit/b5e2265fd5b9f0d8d3c350dea5becaa634dc6fcb))
+
 ## [0.2.6](https://github.com/majksa-dev/static-server/compare/v0.2.5...v0.2.6) (2024-08-10)
 
 
